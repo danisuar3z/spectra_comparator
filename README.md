@@ -9,5 +9,5 @@ The names in the legend by default will be numeric but if you place a file named
 ### Considerations  
 You need the python libraries matplotlib and pandas  
 <br/>
-Expample  
+Example  
 ![](example.png)
