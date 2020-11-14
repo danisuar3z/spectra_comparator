@@ -7,6 +7,6 @@ Some plot configuration is allowed in GUI, but you can easily change things in c
 The names in the legend by default will be numeric but if you place a file named "nombres.txt" in the same folder or one up the data folder, it will use those names to label the data.  
 
 ### Considerations  
-
-
+You need the python libraries matplotlib and pandas  
+  
 ![](example.png)
