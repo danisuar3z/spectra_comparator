@@ -1,1 +1,1 @@
-@python comp_tk.py %*
+@python C:\Users\YourUser\SomeFolder\comp_tk.py %*
