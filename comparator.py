@@ -4,7 +4,6 @@
 # Dani Suarez - suarezdanieltomas@gmail.com
 # Spectra comparator
 
-import sys
 import os
 
 import matplotlib.pyplot as plt
@@ -93,6 +92,8 @@ def compare(medidas, dfs, nombres, peaks=True, loc="best",
     # medidas = input("Ingresá los números de medidas separados por comas"
                     # "\nEjemplo: 1,4,5\n--> ")
     # medidas = [i for i in map(int, medidas.split(","))]
+    # plt.style.use("tableau-colorblind10")
+    # plt.tight_layout()
     for i in medidas:
         plt.title(title)
         plt.xlabel("Longitud de onda / $nm$")
@@ -103,15 +104,18 @@ def compare(medidas, dfs, nombres, peaks=True, loc="best",
             plt.ylim(ylim)
         plt.grid(True, axis="both", linestyle="--")
         plot_i(i, dfs)
+        if peaks:
+            max_, locs = find_peaks(dfs[i-1].x.to_list(), dfs[i-1].y.to_list(), 30)
+            plt.annotate(str(max_[0]), (max_[0], max_[1]))
+            if locs:
+                for loc in locs:
+                    plt.annotate(str(loc[0]), (loc[0] + 1, loc[1]))
         if legend:
             plt.legend(legend, loc=loc, framealpha=0.9)
         else:
             noms = [nombres[i-1] for i in medidas]
+            # print(noms)
             plt.legend(noms, loc=loc, framealpha=0.9)
-        if peaks:
-            max_, locs = find_peaks(dfs[i-1].x.to_list(), dfs[i-1].y.to_list(), 30)
-            plt.annotate(str(max_[0]) + " nm", (max_[0], max_[1]))
-            if locs:
-                for loc in locs:
-                    plt.annotate(str(loc[0]) + " nm", (loc[0] + 1, loc[1]))
+
+
     plt.show()
