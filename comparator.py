@@ -106,7 +106,8 @@ def compare(medidas, dfs, nombres, peaks=True, loc="best",
         if legend:
             plt.legend(legend, loc=loc, framealpha=0.9)
         else:
-            plt.legend(nombres, loc=loc, framealpha=0.9)
+            noms = [nombres[i-1] for i in medidas]
+            plt.legend(noms, loc=loc, framealpha=0.9)
         if peaks:
             max_, locs = find_peaks(dfs[i-1].x.to_list(), dfs[i-1].y.to_list(), 30)
             plt.annotate(str(max_[0]) + " nm", (max_[0], max_[1]))
