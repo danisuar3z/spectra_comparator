@@ -5,10 +5,15 @@
 # GUI spectra comparator with tkinter
 
 import os
+import ctypes
 import tkinter
 from tkinter import filedialog
 
 from comparator import read_names, find_files, create_dfs, compare, plot_all
+
+# With this, the icon defined later will apply to the Windows taskbar also
+myappid = 'danisuar3z.science.spectra_comparator.v1' # arbitrary string
+ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
 
 home = os.path.expanduser('~/Documents')
 font_M = "Arial 12"
